@@ -4,18 +4,12 @@
 
 ## API для аутентификации пользователей и сохранения статей
 
-```
-echo Hello world
-```
-
 ```bash
-#!/bin/bash
 #сервер на localhost:3000
 npm run start
 ```
 
 ```bash
-#!/bin/bash
 #сервер на localhost:3000 с хот релоудом
 npm run dev
 ```
