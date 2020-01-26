@@ -1,0 +1,47 @@
+require('dotenv').config();
+const express = require('express');
+
+const helmet = require('helmet');
+
+const app = express();
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const { errors } = require('celebrate');
+const { login, createUser } = require('./controllers/users');
+const router = require('./routes/index');
+const valid = require('./helpers/validation');
+
+const { requestLogger, errorLogger } = require('./middlewares/logger');
+
+const config = require('./config/config');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+const { NODE_ENV, DBPATH } = process.env;
+
+mongoose.connect(NODE_ENV === 'production' ? DBPATH : config.mongoDB, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true,
+});
+
+app.use(require('./middlewares/limiter'));
+
+app.use(helmet());
+app.use(requestLogger);
+
+app.post('/signup', valid.signup, createUser);
+app.post('/signin', valid.signin, login);
+
+app.use('/', router);
+
+app.use(errorLogger);
+
+app.use(errors());
+
+app.use(require('./middlewares/centralErrors'));
+
+module.exports = app;
