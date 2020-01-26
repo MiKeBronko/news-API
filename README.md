@@ -4,6 +4,6 @@
 
 ## Публичный IPv4 на ВМ <130.193.39.106>
 
-## API  <http://newsview.tk>
+## API  <http://newsviewer.tk>
 
-## API  <https://newsview.tk>
+## API  <https://newsviewer.tk>
