@@ -15,11 +15,11 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const config = require('./config/config');
 
+const { NODE_ENV, DBPATH } = process.env;
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-const { NODE_ENV, DBPATH } = process.env;
 
 mongoose.connect(NODE_ENV === 'production' ? DBPATH : config.mongoDB, {
   useNewUrlParser: true,
