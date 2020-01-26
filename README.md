@@ -14,7 +14,7 @@ npm run start
 npm run dev
 ```
 
-## API можно найти здесь ( <https://newsviewer.ml/api>)
+## API можно найти здесь ( <https://newsviewer.ml/api>) или ( <https://api.newsviewer.ml>)
 
 ## Запросы
 
