@@ -4,7 +4,9 @@ const errMessage = require('../variables/messages');
 
 const articleRoute = require('./articles');
 const userRoute = require('./users');
+
 const Error404 = require('../errors/err-404');
+
 
 router.use('/', userRoute)
   .use('/', articleRoute)
