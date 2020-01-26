@@ -4,13 +4,15 @@
 
 ## API для аутентификации пользователей и сохранения статей
 
-## команда npm run start, запускает сервер на localhost:3000
+```сервер на localhost:3000
+$npm run start
+```
 
-## команда npm run dev, запускает сервер на localhost:3000 с хот релоудом
+```сервер на localhost:3000 с хот релоудом
+$npm run dev
+```
 
-## API  <http://newsviewer.ml>
-
-## API  <https://newsviewer.ml>
+## API можно найти здесь ( <https://newsviewer.ml/api>)
 
 ## Запросы
 
