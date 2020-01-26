@@ -4,11 +4,13 @@
 
 ## API для аутентификации пользователей и сохранения статей
 
-```сервер на localhost:3000
-$npm run start
+```bash
+#сервер на localhost:3000
+npm run start
 ```
 
-```сервер на localhost:3000 с хот релоудом
+```bash
+#сервер на localhost:3000 с хот релоудом
 $npm run dev
 ```
 
