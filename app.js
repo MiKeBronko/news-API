@@ -7,9 +7,7 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
-const { login, createUser } = require('./controllers/users');
 const router = require('./routes/index');
-const valid = require('./helpers/validation');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -32,9 +30,6 @@ app.use(require('./middlewares/limiter'));
 
 app.use(helmet());
 app.use(requestLogger);
-
-app.post('/signup', valid.signup, createUser);
-app.post('/signin', valid.signin, login);
 
 app.use('/', router);
 
