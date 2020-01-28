@@ -43,7 +43,7 @@ module.exports.deleteArticle = (req, res, next) => {
       if (!article) {
         throw new Error404(errMessage[404].article);
       }
-      if (JSON.stringify(req.user._id) === JSON.stringify(article.owner._id)) {
+      if (article.owner._id.equals(req.user._id)) {
         return Article.findByIdAndRemove(req.params.articleId)
           .then((items) => res.send({ data: items }));
       }
