@@ -10,9 +10,29 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 
 const User = require('../models/user');
 
+const Error401 = require('../errors/err-400');
 const Error404 = require('../errors/err-404');
-
+const Error400 = require('../errors/err-400');
 const errMessage = require('../variables/messages');
+
+// module.exports.createUser = (req, res, next) => {
+//   const { name, email } = req.body;
+//   console.log(req.body.email);
+//   User.findByOne({ email: req.body.email })
+//     .then((doubleEmail) => {
+//       if (!doubleEmail) {
+//         bcrypt.hash(req.body.password, 10)
+//           .then((hash) => User.create({
+//             name, email: req.body.email, password: hash,
+//           }))
+//           .then((user) => res.status(201).send({
+//             _id: user._id, name, email,
+//           }));
+//         throw new Error400(errMessage[400]);
+//       }
+//     })
+//     .catch(next);
+// };
 
 module.exports.createUser = (req, res, next) => {
   const { name, email } = req.body;
@@ -44,6 +64,7 @@ module.exports.login = (req, res, next) => {
       res.send({
         token: jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : config.secret, { expiresIn: '7d' }),
       });
+      throw new Error401(errMessage[401].access);
     })
     .catch(next);
 };
