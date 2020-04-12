@@ -1,8 +1,8 @@
 const cors = require('cors');
 
-const express = require('express');
+// const express = require('express');
 
-const app = express();
+// const app = express();
 
 const whitelist = [
   'http://localhost:3000',
@@ -19,12 +19,5 @@ const corsOptionsDelegate = function (req, callback) {
   callback(null, corsOptions); // callback expects two parameters: error and options
 };
 
+
 module.exports = { corsOptionsDelegate, cors };
-
-// app.get('/products/:id', cors(corsOptionsDelegate), (req, res, next) => {
-//   res.json({ msg: 'This is CORS-enabled for a whitelisted domain.' });
-// });
-
-// app.listen(80, () => {
-//   console.log('CORS-enabled web server listening on port 80');
-// });
